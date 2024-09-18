@@ -1,4 +1,5 @@
 ### Bienvenue !
+(English version below)
 
 Ce projet concerne celui de l'architecte Sophie Bluel. L'objectif était d'une part de construire un site qui présente de manière dynamique les travaux de l'architecte pouvant être filtrés par catégories. De plus j'ai également développé un espace "admin" afin que l'architecte puisse ajouter, modifier ou supprimer des travaux, et ce toujours de manière dynamique.
 J'ai réalisé la partie Frontend en HTML / CSS / JS à partir de la maquette Figma accessible via le lien ci-dessous :
