@@ -23,6 +23,7 @@
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
+    "eslint": "^8.57.0",
     "nodemon": "^2.0.15"
   }
 }
