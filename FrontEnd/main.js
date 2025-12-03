@@ -5,7 +5,8 @@ async function initialiserPage() {
     afficherTravaux('Tous') // Affiche tous les travaux
     modeEdition() // Configure la page en mode d'édition si l'utilisateur est connecté
 }
-// Récupération des données dans un tableau
+
+// Création de 2 variables pour lister les données de catégories et de travaux
 let categoriesData = []
 let travauxData = []
 
@@ -75,6 +76,7 @@ function afficherTravaux(categoryName) {
     // Efface le contenu actuel de la galerie
     gallery.innerHTML = ''
     // On détermine quelle liste doit être utilisée, soit la liste complète 'Tous' soit une liste filtrée d'une catégorie spécifiée
+    // Cette fonction passe en revue chaque élément (work) de travauxData et vérifie si le nom de la catégorie de l'élément (work.category.name) correspond au nom de la catégorie sélectionnée (categoryName).
     const travaux = (categoryName === 'Tous') ? travauxData : travauxData.filter(work => work.category.name === categoryName)
     // Boucle sur chaque travail filtré pour l'afficher dans la galerie
        let i = 0
@@ -129,23 +131,25 @@ function modeEdition() {
         titreMesprojets.insertAdjacentElement('afterend', btnEdit)
         btnEdit.insertAdjacentElement('afterbegin', iconeModifier)
 
-        // Ajoute un écouteur d'événement sur le lien 'logout'
-        lienLog.addEventListener('click', () => {
-            localStorage.removeItem('sessionToken') //on supprime le token de connexion
-            window.location.reload() //on recharge la page
+        // Ajoute un écouteur d'événement sur le lien 'logout' si l'utilisateur est connecté
+        lienLog.addEventListener('click', (event) => {
+            if (localStorage.getItem('sessionToken')) {
+                localStorage.removeItem('sessionToken') // Supprime le token de session
+                window.location.reload() //on recharge la page
+            }
         })
 
         // Ajoute un écouteur d'événement sur le lien 'Modifier'
         btnEdit.addEventListener('click', function(event) {
             event.preventDefault() // Empêche la navigation
-            afficherModale() // Affiche la modale
+            afficherModale1() // Affiche la modale
         })
         
     }
 }
 
-// Affichage de la modale 
-function afficherModale() {
+// Affichage de la modale Galerie photos
+function afficherModale1() {
     let modal = document.getElementById('modale1')
     // si la modale n'existe pas déjà, renvoie vers la fonction creerModale1 pour la créer
     if (!modal) {
@@ -265,7 +269,7 @@ async function supprimerPhotoModale1(photoId) {
             photoASupprimer.remove()
         }
         
-        // Mise à jour des données de travaux en tenant compte du travail (photo) supprimé
+        // Mise à jour des données de travaux en tenant compte du travail (photo) supprimé : on exclue l'élément dont l'identifiant correspond à photoId.
         travauxData = travauxData.filter(travail => travail.id !== photoId)
         // Rafraîchit l'affichage de la galerie pour refléter la suppression
         afficherTravaux('Tous')
@@ -673,7 +677,7 @@ function resetFormulaireModale2() {
 }
 
 // Gestionnaire d'événements qui concerne l'affichage et la navigation pour les modales
-function gestionnaireEvenementsModale() {
+function gestionnaireEvenementsModales() {
     // Fermeture de la modale lorsque l'utilisateur clique sur le bouton de fermeture ou en dehors de la modale
     window.onclick = function(event) {
         const modales = document.querySelectorAll('.modaleGalerie, .modaleFormulaire')  // Récupère toutes les modales
@@ -702,7 +706,8 @@ function fermetureModales() {
     document.querySelector('.modaleFormulaire').style.display = 'none'
 }
 
-
 initialiserPage().then(() => {
-    gestionnaireEvenementsModale() // Configure les gestionnaires après l'initialisation de la page
+    gestionnaireEvenementsModales() // Configure le gestionnaire après l'initialisation de la page
 })
+
+

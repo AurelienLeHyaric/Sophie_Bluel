@@ -291,6 +291,7 @@ footer nav ul {
 	border-radius: 10px;
 }
 
+/* Le titre des modales */
 .modaleGalerie p, .modaleFormulaire p {
 	padding: 40px 0;
 	background-color: white;
@@ -298,6 +299,7 @@ footer nav ul {
 	font-size: 26px;
 }
 
+/* La zone de la galerie de photos */
 .modal-gallery {
 	display:flex;
 	flex-wrap: wrap;
@@ -305,39 +307,23 @@ footer nav ul {
 	padding: 10px 80px 10px 100px;
 }
 
-.modal-gallery:after {
-    content: '';
-    display: block;
-	margin-top: 50px;
-    height: 1px;
-	width: 100%;
-    max-width: 420px;
-    background-color: #B3B3B3; 
-}
 
-
+/* La zone de suppression de photos*/
 .img-container {
 	position: relative;
 	flex: 0 1 auto;
 	background-color: white;
 }
 
-
-
 .img-container img {
 	background-color: white;
 	width: 77px;
 	height: 102px;
-
-	
 	padding: 0 10px 20px 0;
 }
 
-.img-container i {
-	background: inherit;
-	padding: 0;
-}
 
+/* Le bouton supprimer (corbeille)*/
 .img-container .deleteBtn {
 	position: absolute;
 	padding: 2px 5px;
@@ -350,6 +336,23 @@ footer nav ul {
 	border-radius: 2px;
 }
 
+.img-container i {
+	background: inherit;
+	padding: 0;
+}
+
+/* Le trait de séparation au-dessus du bouton valider */
+.modal-gallery:after {
+    content: '';
+    display: block;
+	margin-top: 50px;
+    height: 1px;
+	width: 100%;
+    max-width: 420px;
+    background-color: #B3B3B3; 
+}
+
+/* Le bouton "Ajouter une photo" et "Valider" */
 .addButton, #submitBtn {
 	display: block;
 	margin: 30px auto;
@@ -367,6 +370,7 @@ footer nav ul {
 	color: white;
 	background-color: #1D6154;
 }
+
 /* Le bouton de fermeture (x) */
 .closeBtn {
     color: black;
@@ -414,7 +418,24 @@ footer nav ul {
 	background-color: white;
 
 }
+/* Zone d'import de photo */
 
+.photoLabelForm * {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+/* L'icone de l'image au-dessus du bouton */
+#formulaireImport i, #formulaireImport .icone {
+	padding: 0;
+	background : #E8F1F6;
+}
+
+#formulaireImport svg {
+	padding: 20px 0 10px 0;
+}
+
+/* Le bouton "+ Ajouter photo" du formulaire */
 .ajoutPhoto {
 	display: flex;
 	justify-content: center;
@@ -431,16 +452,11 @@ footer nav ul {
 	border-radius: 50px;
 }
 
-
-#formulaireImport i, #formulaireImport .icone {
-	padding: 0;
+.photoLabelForm {
 	background : #E8F1F6;
 }
 
-#formulaireImport svg {
-	padding: 20px 0 10px 0;
-}
-
+/* La mention sur les types de fichiers acceptés */
 .fileInfo {
 	padding: 10px 0 25px 0;
 	margin: 0;
@@ -448,17 +464,15 @@ footer nav ul {
 	font-size: 10px;
 }
 
-.photoLabelForm {
-	background : #E8F1F6;
-}
+/* La zone d'aperçu de l'image*/
 
+#imagePreview {
+	height: 169px;
+	object-fit: contain;
+	background-color: #E8F1F6;
+ }
 
-.photoLabelForm * {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
+/* La zone de saisie de titre */
 #titleLabel, #categoryLabel {
 	background-color: white;
 	margin-top: 20px;
@@ -478,11 +492,13 @@ footer nav ul {
 	font-size: 14px;
 }
 
+/* La zone de choix de catégorie */
 #categoryLabel {
 	margin-right: 50px;
 	padding-right: 50px;
 }
 
+/* Trait de séparation au-dessus du bouton Valider */
 #trait {
 	content: '';
     display: block;
@@ -493,13 +509,12 @@ footer nav ul {
     background-color: #B3B3B3; 
 }
 
+/* Le bouton Valider "par défaut"*/
 #submitBtn {
-	padding: 10px 0;
-	margin: 30px auto;
 	background: #A7A7A7;
     color: white;
 }
-
+/* Le bouton Valider "actif"*/
 #submitBtnActive {
 	padding: 10px 0;
     background: #1D6154;
@@ -516,12 +531,7 @@ footer nav ul {
 	cursor: pointer;
 }
 
- #imagePreview {
-	height: 169px;
-	object-fit: contain;
-	background-color: #E8F1F6;
- }
-
+/* Les messages d'erreurs du formulaire*/
  #categoryErrorMsg, #titleErrorMsg, #photoErrorMsg {
 	background: inherit;
 	text-align: center;
